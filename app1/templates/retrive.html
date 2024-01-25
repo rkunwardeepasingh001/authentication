@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Retrieve</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+<body>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+      <th>username</th>
+      <th>email</th>
+      <th>staff</th>
+      <th>sign_up</th>
+      <th>sign_in</th>
+      <th>admin</th>
+      <th>password</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in v %}
+    <tr>
+      <td>{{obj.username}}</td>
+      <td>{{obj.email}}</td>
+      <td>{{obj.is_staff}}</td>
+      <td><a href="{% url 'sign_up' %}">sign_up</a></td>
+      <td><a href="{% url 'sign_in' %}">sign_in</a></td>
+      <td><a href="/admin">admin</a></td>
+      <td>{{obj.password}}</td>
+    </tr>
+    {% endfor %}
+    <button>
+      <a href='/admin'>Admin</a> <br>
+    </button>
+  </tbody>
+</table>
+</body>
+</html>
